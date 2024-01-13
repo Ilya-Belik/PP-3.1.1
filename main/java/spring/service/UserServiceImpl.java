@@ -6,10 +6,12 @@ import spring.DAO.UserDAO;
 import spring.Model.User;
 import java.util.List;
 @Service
-@Transactional
-public class UserServiceImpl implements UserService{
-    @Inject
+public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
+
+    public UserServiceImpl(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
     @Override
     public List<User> getAllUsers() {
         return userDAO.getAllUsers();
