@@ -9,8 +9,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class UserController {
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping(value = "/")
     public String showAllUsers(Model model) {
         List<User> userList = userService.getAllUsers();
